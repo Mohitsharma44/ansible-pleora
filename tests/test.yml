@@ -1,5 +1,14 @@
 ---
 - hosts: localhost
-  remote_user: root
+  become: yes
+  connection: local
+  gather_facts: no
+  vars:
+    pleora_deps:
+      - g++
+      - gcc
+      - make
+      - libqt4-dev
+    installer_staging: "/tmp/pleora_setup"
   roles:
-    - pleora
+    - role_under_test
