@@ -1,0 +1,7 @@
+---
+
+- name: Removing installer files (backed up in /opt)
+  file:
+    path: "{{ installer_staging }}"
+    state: absent
+  become: yes

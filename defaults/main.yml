@@ -1,0 +1,11 @@
+---
+# defaults file for pleora
+
+# dependencies for installing PleoraSDK
+pleora_deps:
+  - g++
+  - gcc
+  - make
+  - libqt4-dev
+
+installer_staging: "/tmp/pleora_setup"

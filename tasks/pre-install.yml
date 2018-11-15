@@ -1,0 +1,28 @@
+---
+
+- name: Install Dependencies
+  apt:
+    name: "{{ pleora_deps }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present
+  become: yes
+
+- name: Setting up Staging directory for installer
+  file:
+    path: "{{ installer_staging }}"
+    state: directory
+  become: yes
+
+- name: Copy the SDK
+  copy:
+    src: "{{ role_path }}/files/pleora_setup.tar.gz"
+    dest: "{{ installer_staging }}/pleora_setup.tar.gz"
+  become: yes
+
+- name: Extracting SDK installer
+  unarchive:
+    src: "{{ installer_staging }}/pleora_setup.tar.gz"
+    dest: "{{ installer_staging }}"
+    remote_src: yes
+  become: yes

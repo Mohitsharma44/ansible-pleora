@@ -1,0 +1,16 @@
+---
+
+- name: Install Pleora SDK
+  shell: "{{ installer_staging }}/pleora_setup/install.sh >> /tmp/pleora_install.log"
+  args:
+    chdir: "{{ installer_staging }}"
+    executable: /bin/bash
+    creates: pleora_install.log
+  become: yes
+
+- name: Tweak network settings
+  shell: "{{ installer_staging }}/pleora_setup/bin/set_socket_buffer_size.sh >> /tmp/pleora_install.log"
+  args:
+    chdir: "{{ installer_staging }}/pleora_setup/bin"
+    executable: /bin/bash
+  become: yes

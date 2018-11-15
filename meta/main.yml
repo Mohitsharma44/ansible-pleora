@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Mohit Sharma
+  description: Playbook for installing Pleora SDK
+  company: NYU CUSP Urban Observatory
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  platforms:
+   - name: Ubuntu
+     versions:
+     - trusty
+
+  galaxy_tags:
+    - 'pleora'
+    - 'cusp'
+    - 'Urban Observatory'

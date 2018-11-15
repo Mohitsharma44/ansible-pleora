@@ -1,0 +1,8 @@
+---
+# tasks file for pleora
+
+- include_tasks: "pre-install.yml"
+
+- include_tasks: "sdk_installer.yml"
+
+- include_tasks: "cleanup.yml"
