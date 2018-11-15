@@ -1,6 +1,7 @@
 Role Name
 =========
 
+[![Build Status](https://travis-ci.org/Mohitsharma44/ansible-pleora.svg?branch=master)](https://travis-ci.org/Mohitsharma44/ansible-pleora)
 Ansible role for installing Pleora SDK on Ubuntu 14.04 (Modified Installer file is included with the role)
 
 Requirements
