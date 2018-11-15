@@ -11,4 +11,4 @@
       - libqt4-dev
     installer_staging: "/tmp/pleora_setup"
   roles:
-    - role_under_test
+    - mohitsharma44.ansible_pleora

@@ -1,13 +1,29 @@
 ---
-services: docker
+
+dist: trusty
+sudo: required
+
+language: python
+python: "2.7"
 
 env:
-  - distro: ubuntu1404
+  - ANSIBLE_VERSION=latest
+  - ANSIBLE_VERSION=2.4.0
+
+branches:
+  only:
+    - master
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  # Install Ansible
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+  - ansible-galaxy install mohitsharma44.ansible_pleora
 
 script:
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/Mohitsharma44/24afe26b97064892267d7fb1c16f9530/raw/
-  - chmod +x ${PWD}/tests/test.sh
-
-  # Run tests.
-  - test_idempotence=false ${PWD}/tests/test.sh
+  # Check syntax
+  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+  - ansible-playbook -i tests/inventory tests/test.yml
