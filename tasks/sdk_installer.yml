@@ -14,3 +14,11 @@
     chdir: "{{ installer_staging }}/pleora_setup/bin"
     executable: /bin/bash
   become: yes
+
+- name: Set the environment variables globally
+  copy:
+    src: /opt/pleora/ebus_sdk/Ubuntu-14.04-x86_64/bin/set_puregev_env
+    dest: /etc/profile.d/pleora_envs.sh
+    remote_src: yes
+    force: yes
+  become: yes
