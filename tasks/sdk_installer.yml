@@ -22,3 +22,13 @@
     remote_src: yes
     force: yes
   become: yes
+
+- name: Adding environment variables locally
+  blockinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    block: |
+      source /etc/profile.d/pleora_envs.sh
+    marker: "# --- {mark} ANSIBLE MANAGED BLOCK --- #"
+    insertafter: EOF
+    backup: no
+    create: yes
